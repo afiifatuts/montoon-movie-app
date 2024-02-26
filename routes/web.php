@@ -16,7 +16,7 @@ use Inertia\Inertia;
 |
 */
 
-// Testing Role 
+// Testing Role
 // Route::get('admin', function () {
 //     return 'Hi Admin';
 // })->middleware('role:admin');
@@ -25,14 +25,16 @@ use Inertia\Inertia;
 // })->middleware('role:user');
 
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+// Route::get('/', function () {
+//     return Inertia::render('Welcome', [
+//         'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//         'laravelVersion' => Application::VERSION,
+//         'phpVersion' => PHP_VERSION,
+//     ]);
+// });
+
+Route::redirect('/', 'prototype/login');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -44,4 +46,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__ . '/auth.php';
+Route::prefix('prototype')->group(function () {
+    route::get('/login', function () {
+        return Inertia::render('Prototype/Login');
+    });
+});
+
+
+// require __DIR__ . '/auth.php';
