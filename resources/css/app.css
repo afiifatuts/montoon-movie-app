@@ -22,7 +22,7 @@
 
 }
 
-
+/* input CSS */
 .input-error {
     @apply ring ring-red-600;
 }
@@ -34,5 +34,27 @@
 .input-primary-outline {
     @apply bg-[#fff] focus:bg-[#fff] border-alerange focus:border-alerange;
     @apply file:bg-alerange file:text-white file:rounded-md file:p-2;
+}
+
+/* Button CSS */
+
+.btn-primary {
+    @apply bg-alerange text-white;
+}
+
+.btn-warning {
+    @apply bg-yellow-500 text-white;
+}
+
+.btn-danger {
+    @apply bg-red-500 text-white;
+}
+
+.btn-light-outline {
+    @apply border border-white text-white;
+}
+
+.btn-white-outline {
+    @apply  text-black border border-[#f1f1f1];
 }
 
