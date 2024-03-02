@@ -52,8 +52,8 @@ export default function Login() {
                     </div>
                 </div>
                 <div className="grid space-y-[14px] mt-[30px]">
-
-                    <Button
+                <Link href={route('dashboard')}>
+                        <Button
                     type='button'
                     variant='primary'
                     >
@@ -61,6 +61,7 @@ export default function Login() {
                             Start Watching
                         </span>
                     </Button>
+                    </Link>
                  <Link href={ route('register') }>
                  <Button
                     type='button'
