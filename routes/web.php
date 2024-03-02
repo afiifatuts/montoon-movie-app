@@ -59,6 +59,9 @@ Route::prefix('prototype')->group(function () {
     Route::get('/subscriptionPlan', function () {
         return Inertia::render('Prototype/SubscriptionPlan');
     })->name('subscriptionplan');
+    Route::get('/movie/{slug}', function () {
+        return Inertia::render('Prototype/Movie/Show');
+    })->name('movie.show');
 });
 
 
