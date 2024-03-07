@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('movies', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 100);
+            $table->string('slug', 100);
+            $table->string('category', 100);
+            $table->string('video_url');
+            $table->string('thumbnail');
+            $table->float('rating')->default(0);
+            $table->boolean('is_featured')->default(false);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
