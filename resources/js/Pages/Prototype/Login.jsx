@@ -1,6 +1,6 @@
 import Button from '@/Components/Button'
-import InputLabel from '@/Components/InputLabel'
-import TextInput from '@/Components/TextInput'
+import Label from '@/Components/Label'
+import Input from '@/Components/Input'
 import { Head, Link } from '@inertiajs/react'
 import React from 'react'
 
@@ -29,10 +29,10 @@ export default function Login() {
             <form className="w-[370px]">
                 <div className="flex flex-col gap-6">
                     <div>
-                        <InputLabel
+                        <Label
                         value="Email Address"
                         />
-                        <TextInput
+                        <Input
                             type="email"
                             name="email"
                             placeholder="Email Address"
@@ -40,10 +40,10 @@ export default function Login() {
                         />
                     </div>
                     <div>
-                        <InputLabel
+                        <Label
                         value="Password"
                         />
-                        <TextInput
+                        <Input
                             ype="password"
                             name="password"
                             placeholder="Password"
@@ -52,7 +52,7 @@ export default function Login() {
                     </div>
                 </div>
                 <div className="grid space-y-[14px] mt-[30px]">
-                <Link href={route('dashboard')}>
+                <Link href={route('prototype.dashboard')}>
                         <Button
                     type='button'
                     variant='primary'
@@ -62,7 +62,7 @@ export default function Login() {
                         </span>
                     </Button>
                     </Link>
-                 <Link href={ route('register') }>
+                 <Link href={ route('prototype.register') }>
                  <Button
                     type='button'
                     variant='light-outline'

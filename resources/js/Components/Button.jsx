@@ -10,6 +10,7 @@ Button.propTypes={
         'light-outline',
         'white-outline',
     ]),
+    processing:PropTypes.bool,
     disabled:PropTypes.bool,
     children:PropTypes.node,
 }
@@ -21,6 +22,7 @@ export default function Button({
     variant ='primary',
     disabled,
     children,
+    processing,
     ...props }) {
     return (
         <button

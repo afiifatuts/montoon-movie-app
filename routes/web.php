@@ -36,9 +36,10 @@ use Inertia\Inertia;
 
 Route::redirect('/', 'prototype/login');
 
-// Route::get('/dashboard', function () {
-//     return Inertia::render('Dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return Inertia::render('Dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -46,20 +47,24 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::prefix('prototype')->group(function () {
-    Route::get('/login', function () {
+Route::prefix('prototype')->name('prototype.')->group(function () {
+    route::get('/login', function () {
         return Inertia::render('Prototype/Login');
     })->name('login');
-    Route::get('/register', function () {
+
+    route::get('/register', function () {
         return Inertia::render('Prototype/Register');
     })->name('register');
-    Route::get('/dashboard', function () {
+
+    route::get('/dashboard', function () {
         return Inertia::render('Prototype/Dashboard');
     })->name('dashboard');
-    Route::get('/subscriptionPlan', function () {
+
+    route::get('/subscriptionPlan', function () {
         return Inertia::render('Prototype/SubscriptionPlan');
-    })->name('subscriptionplan');
-    Route::get('/movie/{slug}', function () {
+    })->name('subscriptionPlan');
+
+    route::get('/movie/{slug}', function () {
         return Inertia::render('Prototype/Movie/Show');
     })->name('movie.show');
 });

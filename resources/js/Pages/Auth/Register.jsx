@@ -1,6 +1,8 @@
 import Button from "@/Components/Button";
-import InputLabel from "@/Components/InputLabel";
-import TextInput from "@/Components/TextInput";
+import Label from "@/Components/Label";
+import Input from "@/Components/Input";
+import ValidationErrors from "@/Components/ValidationErrors";
+import InputError from "@/Components/template/InputError";
 import { Head, Link, useForm } from "@inertiajs/react";
 import { useEffect } from "react";
 
@@ -19,9 +21,16 @@ export default function Register() {
         };
     }, []);
 
+    const onHandleChange = (event) =>{
+        setData(event.target.name, event.target.value)
+    }
+
     const submit = (e) => {
         e.preventDefault();
 
+        // console.log(data);
+        //methodnya post
+        //routenya ke register
         post(route('register'));
     };
 
@@ -37,6 +46,7 @@ export default function Register() {
                         alt=""
                     />
                 </div>
+
                 <div className="py-24 flex laptopLg:ml-[680px] laptopXl:ml-[870px]">
                     <div>
                         <img src="/images/moonton-white.svg" alt="" />
@@ -48,55 +58,59 @@ export default function Register() {
                                 Explore our new movies and get <br />
                                 the better insight for your life
                             </p>
+                            <ValidationErrors errors={errors}/>
+
                         </div>
                         <form className="w-[370px]" onSubmit={submit}>
                             <div className="flex flex-col gap-6">
                                 <div>
-                                    <InputLabel value="Full Name" />
-                                    <TextInput
+                                    <Label value="Full Name" />
+                                    <Input
                                         type="text"
                                         name="name"
                                         value={data.name}
                                         placeholder="Your fullname..."
                                         isFocused={true}
-                                        onChange={(e) => setData('name', e.target.value)}
+                                        handleChange={onHandleChange}
                                         required
                                     />
                                 </div>
+
                                 <div>
-                                    <InputLabel value="Email Address" />
-                                    <TextInput
+                                    <Label value="Email Address" />
+                                    <Input
                                         type="email"
                                         name="email"
                                         value={data.email}
                                         placeholder="Your Email Address"
-                                        onChange={(e) => setData('email', e.target.value)}
+                                        handleChange={onHandleChange}
                                         required
                                     />
                                 </div>
                                 <div>
-                                    <InputLabel value="Password" />
-                                    <TextInput
+                                    <Label value="Password" />
+                                    <Input
                                         type="password"
                                         name="password"
                                         value={data.password}
                                         placeholder="Your Password"
-                                        onChange={(e) => setData('password', e.target.value)}
+                                        handleChange={onHandleChange}
                                         required
                                     />
                                 </div>
                                 <div>
-                                    <InputLabel value="Confirm Password" />
-                                    <TextInput
+                                    <Label value="Confirm Password" />
+                                    <Input
                                         type="password"
                                         name="password_confirmation"
                                         value={data.password_confirmation}
                                         placeholder="Your Password"
-                                        onChange={(e) => setData('password_confirmation', e.target.value)}
+                                        handleChange={onHandleChange}
                         required
                                     />
                                 </div>
                             </div>
+
                             <div className="grid space-y-[14px] mt-[30px]">
                                     <Button type="submit" processing={processing}>
                                         <span className="text-base font-semibold">
